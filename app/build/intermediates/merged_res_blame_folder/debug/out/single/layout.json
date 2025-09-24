@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/fragment_create_post.xml",
+        "source": "com.firstword.app-main-69:/layout/fragment_create_post.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/fragment_map.xml",
+        "source": "com.firstword.app-main-69:/layout/fragment_map.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/fragment_profile.xml",
+        "source": "com.firstword.app-main-69:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/fragment_search.xml",
+        "source": "com.firstword.app-main-69:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/activity_auth.xml",
+        "source": "com.firstword.app-main-69:/layout/activity_auth.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/fragment_feed.xml",
+        "source": "com.firstword.app-main-69:/layout/fragment_feed.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/item_post.xml",
+        "source": "com.firstword.app-main-69:/layout/item_post.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/activity_main.xml",
+        "source": "com.firstword.app-main-69:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.firstword.app-mergeDebugResources-66:/layout/item_trending_keyword.xml",
+        "source": "com.firstword.app-main-69:/layout/item_trending_keyword.xml"
+    }
+]

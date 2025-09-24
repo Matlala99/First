@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "168754219142",
+    "project_id": "firstword-b739b",
+    "storage_bucket": "firstword-b739b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168754219142:android:e925f90f29fad87f4ea907",
+        "android_client_info": {
+          "package_name": "com.firstword.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGzrCuh-z_6JQ33ltv2gMxoJnCwUSaOgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

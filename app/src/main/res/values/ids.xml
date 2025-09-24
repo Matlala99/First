@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="text_category" type="id" />
+    <item name="image_user_avatar" type="id" />
+    <item name="text_user_name" type="id" />
+    <item name="text_user_handle" type="id" />
+    <item name="text_timestamp" type="id" />
+    <item name="text_vote_ai_count" type="id" />
+    <item name="button_vote_ai" type="id" />
+    <item name="text_vote_fake_count" type="id" />
+    <item name="button_vote_fake" type="id" />
+    <item name="text_vote_true_count" type="id" />
+    <item name="button_vote_true" type="id" />
+    <item name="layout_voting" type="id" />
+    <item name="text_shares_count" type="id" />
+    <item name="button_vote" type="id" />
+    <item name="button_share" type="id" />
+    <item name="text_comments_count" type="id" />
+    <item name="button_comment" type="id" />
+    <item name="text_likes_count" type="id" />
+    <item name="button_like" type="id" />
+    <item name="text_view_count" type="id" />
+    <item name="text_stats" type="id" />
+    <item name="text_authenticity_summary" type="id" />
+    <item name="button_menu" type="id" />
+    <item name="text_post_title" type="id" />
+    <item name="text_post_content" type="id" />
+    <item name="image_post" type="id" />
+    <item name="layout_authenticity" type="id" />
+    <item name="progress_authenticity" type="id" />
+</resources>

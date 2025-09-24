@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="feed_categories">
+        <item>All</item>
+        <item>News</item>
+        <item>Technology</item>
+        <item>Politics</item>
+        <item>Entertainment</item>
+        <item>Sports</item>
+        <item>Science</item>
+    </string-array>
+</resources>
