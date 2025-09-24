@@ -6,59 +6,41 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search news, topics, or sources..."
-        app:iconifiedByDefault="false" />
+        android:queryHint="Search posts, people, tags..." />
 
-    <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
         android:visibility="gone" />
 
-    <!-- Initial State -->
+    <!-- Initial State (Recent Searches) -->
     <LinearLayout
         android:id="@+id/layoutInitialState"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:visibility="visible">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trending Topics"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewTrending"
+            android:id="@+id/textRecentSearches"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp" />
+            android:text="Recent Searches"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_search"
-            android:alpha="0.5" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecentSearches"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Search for news, topics, or sources"
-            android:textColor="@color/text_secondary"
-            android:textSize="16sp" />
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -71,22 +53,12 @@
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/textSearchQuery"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Search results"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/textResultsCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="0 results"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp" />
+            android:padding="8dp"
+            android:text="Search results"
+            android:textAppearance="?attr/textAppearanceBodySmall" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSearch"
@@ -104,28 +76,12 @@
         android:gravity="center"
         android:visibility="gone">
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_search"
-            android:alpha="0.5" />
-
         <TextView
-            android:id="@+id/textEmptyQuery"
+            android:id="@+id/textEmptyMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="No results found"
-            android:textColor="@color/text_secondary"
             android:textSize="16sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Try different keywords"
-            android:onClick="@{() -> viewModel.clearSearch()}"
-            style="@style/Widget.Material3.Button.OutlinedButton" />
 
     </LinearLayout>
 

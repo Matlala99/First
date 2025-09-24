@@ -3715,8 +3715,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewRecentSearches
 id recyclerViewSearch
-id recyclerViewTrending
 id recycler_view_feed
 id report_drawn
 id reverseSawtooth
@@ -3814,10 +3814,10 @@ id tag_window_insets_animation_callback
 id terrain
 id text
 id text2
-id textEmptyQuery
+id textEmptyMessage
 id textEnd
+id textRecentSearches
 id textResultsCount
-id textSearchQuery
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart

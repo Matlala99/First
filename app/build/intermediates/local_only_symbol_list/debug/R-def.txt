@@ -141,8 +141,8 @@ id profileFragment
 id progressBar
 id progress_authenticity
 id progress_bar
+id recyclerViewRecentSearches
 id recyclerViewSearch
-id recyclerViewTrending
 id recycler_view_feed
 id searchFragment
 id searchView
@@ -150,9 +150,9 @@ id spinnerCategory
 id spinner_category
 id subtitle
 id swipe_refresh_layout
-id textEmptyQuery
+id textEmptyMessage
+id textRecentSearches
 id textResultsCount
-id textSearchQuery
 id text_authenticity_summary
 id text_category
 id text_comments_count

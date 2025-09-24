@@ -35,40 +35,40 @@ public final class FragmentSearchBinding implements ViewBinding {
   public final ProgressBar progressBar;
 
   @NonNull
-  public final RecyclerView recyclerViewSearch;
+  public final RecyclerView recyclerViewRecentSearches;
 
   @NonNull
-  public final RecyclerView recyclerViewTrending;
+  public final RecyclerView recyclerViewSearch;
 
   @NonNull
   public final SearchView searchView;
 
   @NonNull
-  public final TextView textEmptyQuery;
+  public final TextView textEmptyMessage;
+
+  @NonNull
+  public final TextView textRecentSearches;
 
   @NonNull
   public final TextView textResultsCount;
 
-  @NonNull
-  public final TextView textSearchQuery;
-
   private FragmentSearchBinding(@NonNull LinearLayout rootView,
       @NonNull LinearLayout layoutEmptyResults, @NonNull LinearLayout layoutInitialState,
       @NonNull LinearLayout layoutSearchResults, @NonNull ProgressBar progressBar,
-      @NonNull RecyclerView recyclerViewSearch, @NonNull RecyclerView recyclerViewTrending,
-      @NonNull SearchView searchView, @NonNull TextView textEmptyQuery,
-      @NonNull TextView textResultsCount, @NonNull TextView textSearchQuery) {
+      @NonNull RecyclerView recyclerViewRecentSearches, @NonNull RecyclerView recyclerViewSearch,
+      @NonNull SearchView searchView, @NonNull TextView textEmptyMessage,
+      @NonNull TextView textRecentSearches, @NonNull TextView textResultsCount) {
     this.rootView = rootView;
     this.layoutEmptyResults = layoutEmptyResults;
     this.layoutInitialState = layoutInitialState;
     this.layoutSearchResults = layoutSearchResults;
     this.progressBar = progressBar;
+    this.recyclerViewRecentSearches = recyclerViewRecentSearches;
     this.recyclerViewSearch = recyclerViewSearch;
-    this.recyclerViewTrending = recyclerViewTrending;
     this.searchView = searchView;
-    this.textEmptyQuery = textEmptyQuery;
+    this.textEmptyMessage = textEmptyMessage;
+    this.textRecentSearches = textRecentSearches;
     this.textResultsCount = textResultsCount;
-    this.textSearchQuery = textSearchQuery;
   }
 
   @Override
@@ -122,15 +122,15 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.recyclerViewSearch;
-      RecyclerView recyclerViewSearch = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerViewSearch == null) {
+      id = R.id.recyclerViewRecentSearches;
+      RecyclerView recyclerViewRecentSearches = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewRecentSearches == null) {
         break missingId;
       }
 
-      id = R.id.recyclerViewTrending;
-      RecyclerView recyclerViewTrending = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerViewTrending == null) {
+      id = R.id.recyclerViewSearch;
+      RecyclerView recyclerViewSearch = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewSearch == null) {
         break missingId;
       }
 
@@ -140,9 +140,15 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textEmptyQuery;
-      TextView textEmptyQuery = ViewBindings.findChildViewById(rootView, id);
-      if (textEmptyQuery == null) {
+      id = R.id.textEmptyMessage;
+      TextView textEmptyMessage = ViewBindings.findChildViewById(rootView, id);
+      if (textEmptyMessage == null) {
+        break missingId;
+      }
+
+      id = R.id.textRecentSearches;
+      TextView textRecentSearches = ViewBindings.findChildViewById(rootView, id);
+      if (textRecentSearches == null) {
         break missingId;
       }
 
@@ -152,15 +158,9 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textSearchQuery;
-      TextView textSearchQuery = ViewBindings.findChildViewById(rootView, id);
-      if (textSearchQuery == null) {
-        break missingId;
-      }
-
       return new FragmentSearchBinding((LinearLayout) rootView, layoutEmptyResults,
-          layoutInitialState, layoutSearchResults, progressBar, recyclerViewSearch,
-          recyclerViewTrending, searchView, textEmptyQuery, textResultsCount, textSearchQuery);
+          layoutInitialState, layoutSearchResults, progressBar, recyclerViewRecentSearches,
+          recyclerViewSearch, searchView, textEmptyMessage, textRecentSearches, textResultsCount);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

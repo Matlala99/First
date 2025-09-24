@@ -1,4 +1,4 @@
-#Wed Sep 24 14:07:47 CAT 2025
+#Wed Sep 24 16:11:11 CAT 2025
 base.0=/home/x/Downloads/FirstWordApp/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/x/Downloads/FirstWordApp/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.10=/home/x/Downloads/FirstWordApp/app/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex

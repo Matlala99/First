@@ -1,266 +1,270 @@
 [
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_layers.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_layers.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_legend_high_engagement.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/legend_high_engagement.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_item_post.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/item_post.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_primary_container.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/primary_container.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_dot_separator.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/dot_separator.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_feed.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_feed.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_check.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_check.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_guest.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_guest.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-mdpi_ic_launcher.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-mdpi/ic_launcher.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_guest_indicator_background.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/guest_indicator_background.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-xxhdpi_ic_launcher.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-xxhdpi/ic_launcher.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_more_vert.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_more_vert.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_legend_high_engagement.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/legend_high_engagement.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-xxxhdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/xml_backup_rules.xml.flat",
-        "source": "com.firstword.app-main-69:/xml/backup_rules.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_circle_background.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/circle_background.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_outline.xml.flat",
-        "source": "com.firstword.app-main-69:/color/outline.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_legend_medium_engagement.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/legend_medium_engagement.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_surface_variant.xml.flat",
-        "source": "com.firstword.app-main-69:/color/surface_variant.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_surface_container_highest.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/surface_container_highest.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_surface_container_highest.xml.flat",
-        "source": "com.firstword.app-main-69:/color/surface_container_highest.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_google.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_google.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_email.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_email.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_email.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_email.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_item_trending_keyword.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/item_trending_keyword.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-xhdpi/ic_launcher.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_guest.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_guest.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/xml_data_extraction_rules.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_outline_variant.xml.flat",
-        "source": "com.firstword.app-main-69:/color/outline_variant.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_item_trending_keyword.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/item_trending_keyword.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_primary_container.xml.flat",
-        "source": "com.firstword.app-main-69:/color/primary_container.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_warning_container.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/warning_container.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_close.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_close.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_my_location.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_my_location.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-xxxhdpi/ic_launcher.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_verified.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_verified.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_fragment_feed.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/fragment_feed.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_item_post.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/item_post.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_search.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_search.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_profile.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_profile.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_circle_background.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/circle_background.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_dot_separator.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/dot_separator.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_error_container.xml.flat",
-        "source": "com.firstword.app-main-69:/color/error_container.xml"
-    },
-    {
-        "merged": "com.firstword.app-merged_res-67:/menu_bottom_navigation_menu.xml.flat",
-        "source": "com.firstword.app-main-69:/menu/bottom_navigation_menu.xml"
-    },
-    {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_add.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_add.xml"
-    },
-    {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_share.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_share.xml"
-    },
-    {
-        "merged": "com.firstword.app-merged_res-67:/drawable_splash_background.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/splash_background.xml"
-    },
-    {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_feed.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_feed.xml"
-    },
-    {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-xhdpi_ic_launcher.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-xhdpi/ic_launcher.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_fragment_map.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/fragment_map.xml"
     },
     {
         "merged": "com.firstword.app-merged_res-67:/layout_fragment_search.xml.flat",
         "source": "com.firstword.app-main-69:/layout/fragment_search.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_surface_container.xml.flat",
-        "source": "com.firstword.app-main-69:/color/surface_container.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-xhdpi_ic_launcher_round.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-xhdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/anim_slide_out_left.xml.flat",
-        "source": "com.firstword.app-main-69:/anim/slide_out_left.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_phone.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_phone.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_like.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_like.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_like.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_like.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/xml_file_paths.xml.flat",
-        "source": "com.firstword.app-main-69:/xml/file_paths.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_authenticity_background.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/authenticity_background.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_image.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_image.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-xxhdpi/ic_launcher.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_heart_outline.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_heart_outline.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_search.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_search.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-xxxhdpi/ic_launcher_round.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/anim_slide_in_right.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/anim/slide_in_right.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_more_vert.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_more_vert.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-xxhdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_activity_auth.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/activity_auth.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_check.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_check.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/color_warning_container.xml.flat",
-        "source": "com.firstword.app-main-69:/color/warning_container.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_outline_variant.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/outline_variant.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_news_source_background.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/news_source_background.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_legend_low_engagement.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/legend_low_engagement.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_activity_main.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/activity_main.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_fragment_create_post.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/fragment_create_post.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-mdpi_ic_launcher_round.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-mdpi/ic_launcher_round.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_error_container.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/error_container.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_legend_low_engagement.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/legend_low_engagement.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-hdpi/ic_launcher.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_fragment_profile.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/fragment_profile.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-mdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_my_location.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_my_location.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_fragment_search.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/fragment_search.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/xml_data_extraction_rules.xml.flat",
-        "source": "com.firstword.app-main-69:/xml/data_extraction_rules.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_heart_outline.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_heart_outline.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_like_outline.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_like_outline.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_fragment_feed.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/fragment_feed.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-xhdpi_ic_launcher_round.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-xhdpi/ic_launcher_round.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_arrow_back.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_arrow_back.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_robot.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_robot.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_image.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_image.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/navigation_nav_graph.xml.flat",
-        "source": "com.firstword.app-main-69:/navigation/nav_graph.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_add.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_add.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_phone.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_phone.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_news_source_background.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/news_source_background.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_arrow_back.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_arrow_back.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_comment.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_comment.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_legend_medium_engagement.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/legend_medium_engagement.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_fragment_profile.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/fragment_profile.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_map.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_map.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_robot.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_robot.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-xxhdpi/ic_launcher_round.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_outline.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/outline.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_authenticity_background.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/authenticity_background.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_layers.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_layers.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_guest_indicator_background.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/guest_indicator_background.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_surface_variant.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/surface_variant.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_verified.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_verified.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/color_surface_container.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/color/surface_container.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_google.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_google.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_activity_main.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/activity_main.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-hdpi_ic_launcher.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-hdpi/ic_launcher.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/navigation_nav_graph.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/navigation/nav_graph.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_fragment_create_post.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/fragment_create_post.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/layout_activity_auth.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/layout/activity_auth.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/anim_slide_in_right.xml.flat",
-        "source": "com.firstword.app-main-69:/anim/slide_in_right.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-mdpi/ic_launcher.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/layout_fragment_map.xml.flat",
-        "source": "com.firstword.app-main-69:/layout/fragment_map.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/menu_bottom_navigation_menu.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/menu/bottom_navigation_menu.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_profile.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_profile.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_like_outline.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_like_outline.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/mipmap-hdpi_ic_launcher_round.xml.flat",
-        "source": "com.firstword.app-main-69:/mipmap-hdpi/ic_launcher_round.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-xxxhdpi/ic_launcher.xml"
     },
     {
-        "merged": "com.firstword.app-merged_res-67:/drawable_ic_comment.xml.flat",
-        "source": "com.firstword.app-main-69:/drawable/ic_comment.xml"
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_share.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_share.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_map.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_map.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_ic_close.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/ic_close.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/xml_backup_rules.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/anim_slide_out_left.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/anim/slide_out_left.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/drawable_splash_background.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/drawable/splash_background.xml"
+    },
+    {
+        "merged": "/home/x/.gradle/daemon/8.4/com.firstword.app-merged_res-67:/xml_file_paths.xml.flat",
+        "source": "/home/x/.gradle/daemon/8.4/com.firstword.app-main-69:/xml/file_paths.xml"
     }
 ]
