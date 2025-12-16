@@ -37,6 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.profile.EditProfileActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+
+        <activity
+            android:name=".ui.profile.FollowersFollowingActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         
         <activity
             android:name=".ui.auth.AuthActivity"

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.firstword.app.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import java.lang.NullPointerException;
@@ -26,6 +27,9 @@ public final class ItemPostBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout buttonComment;
+
+  @NonNull
+  public final MaterialButton buttonFollow;
 
   @NonNull
   public final LinearLayout buttonLike;
@@ -53,6 +57,9 @@ public final class ItemPostBinding implements ViewBinding {
 
   @NonNull
   public final ImageView imageUserAvatar;
+
+  @NonNull
+  public final ImageView imageVerified;
 
   @NonNull
   public final LinearLayout layoutAuthenticity;
@@ -109,11 +116,12 @@ public final class ItemPostBinding implements ViewBinding {
   public final TextView textVoteTrueCount;
 
   private ItemPostBinding(@NonNull MaterialCardView rootView, @NonNull LinearLayout buttonComment,
-      @NonNull LinearLayout buttonLike, @NonNull ImageButton buttonMenu,
-      @NonNull LinearLayout buttonShare, @NonNull LinearLayout buttonVote,
-      @NonNull LinearLayout buttonVoteAi, @NonNull LinearLayout buttonVoteFake,
-      @NonNull LinearLayout buttonVoteTrue, @NonNull ImageView imagePost,
-      @NonNull ImageView imageUserAvatar, @NonNull LinearLayout layoutAuthenticity,
+      @NonNull MaterialButton buttonFollow, @NonNull LinearLayout buttonLike,
+      @NonNull ImageButton buttonMenu, @NonNull LinearLayout buttonShare,
+      @NonNull LinearLayout buttonVote, @NonNull LinearLayout buttonVoteAi,
+      @NonNull LinearLayout buttonVoteFake, @NonNull LinearLayout buttonVoteTrue,
+      @NonNull ImageView imagePost, @NonNull ImageView imageUserAvatar,
+      @NonNull ImageView imageVerified, @NonNull LinearLayout layoutAuthenticity,
       @NonNull LinearLayout layoutVoting, @NonNull ProgressBar progressAuthenticity,
       @NonNull TextView textAuthenticitySummary, @NonNull Chip textCategory,
       @NonNull TextView textCommentsCount, @NonNull TextView textLikesCount,
@@ -125,6 +133,7 @@ public final class ItemPostBinding implements ViewBinding {
       @NonNull TextView textVoteTrueCount) {
     this.rootView = rootView;
     this.buttonComment = buttonComment;
+    this.buttonFollow = buttonFollow;
     this.buttonLike = buttonLike;
     this.buttonMenu = buttonMenu;
     this.buttonShare = buttonShare;
@@ -134,6 +143,7 @@ public final class ItemPostBinding implements ViewBinding {
     this.buttonVoteTrue = buttonVoteTrue;
     this.imagePost = imagePost;
     this.imageUserAvatar = imageUserAvatar;
+    this.imageVerified = imageVerified;
     this.layoutAuthenticity = layoutAuthenticity;
     this.layoutVoting = layoutVoting;
     this.progressAuthenticity = progressAuthenticity;
@@ -184,6 +194,12 @@ public final class ItemPostBinding implements ViewBinding {
       id = R.id.button_comment;
       LinearLayout buttonComment = ViewBindings.findChildViewById(rootView, id);
       if (buttonComment == null) {
+        break missingId;
+      }
+
+      id = R.id.button_follow;
+      MaterialButton buttonFollow = ViewBindings.findChildViewById(rootView, id);
+      if (buttonFollow == null) {
         break missingId;
       }
 
@@ -238,6 +254,12 @@ public final class ItemPostBinding implements ViewBinding {
       id = R.id.image_user_avatar;
       ImageView imageUserAvatar = ViewBindings.findChildViewById(rootView, id);
       if (imageUserAvatar == null) {
+        break missingId;
+      }
+
+      id = R.id.image_verified;
+      ImageView imageVerified = ViewBindings.findChildViewById(rootView, id);
+      if (imageVerified == null) {
         break missingId;
       }
 
@@ -349,12 +371,13 @@ public final class ItemPostBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemPostBinding((MaterialCardView) rootView, buttonComment, buttonLike, buttonMenu,
-          buttonShare, buttonVote, buttonVoteAi, buttonVoteFake, buttonVoteTrue, imagePost,
-          imageUserAvatar, layoutAuthenticity, layoutVoting, progressAuthenticity,
-          textAuthenticitySummary, textCategory, textCommentsCount, textLikesCount, textPostContent,
-          textPostTitle, textSharesCount, textStats, textTimestamp, textUserHandle, textUserName,
-          textViewCount, textVoteAiCount, textVoteFakeCount, textVoteTrueCount);
+      return new ItemPostBinding((MaterialCardView) rootView, buttonComment, buttonFollow,
+          buttonLike, buttonMenu, buttonShare, buttonVote, buttonVoteAi, buttonVoteFake,
+          buttonVoteTrue, imagePost, imageUserAvatar, imageVerified, layoutAuthenticity,
+          layoutVoting, progressAuthenticity, textAuthenticitySummary, textCategory,
+          textCommentsCount, textLikesCount, textPostContent, textPostTitle, textSharesCount,
+          textStats, textTimestamp, textUserHandle, textUserName, textViewCount, textVoteAiCount,
+          textVoteFakeCount, textVoteTrueCount);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

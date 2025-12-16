@@ -60,6 +60,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final ProgressBar progressBar;
 
   @NonNull
+  public final TextView textBio;
+
+  @NonNull
   public final TextView textDisplayName;
 
   @NonNull
@@ -87,10 +90,10 @@ public final class FragmentProfileBinding implements ViewBinding {
       @NonNull LinearLayout layoutFollowing, @NonNull LinearLayout layoutInterests,
       @NonNull LinearLayout layoutPosts, @NonNull LinearLayout layoutSignInPrompt,
       @NonNull LinearLayout layoutSignedIn, @NonNull ProgressBar progressBar,
-      @NonNull TextView textDisplayName, @NonNull TextView textFollowersCount,
-      @NonNull TextView textFollowingCount, @NonNull TextView textGuestIndicator,
-      @NonNull TextView textHandle, @NonNull TextView textInterests,
-      @NonNull TextView textPostsCount) {
+      @NonNull TextView textBio, @NonNull TextView textDisplayName,
+      @NonNull TextView textFollowersCount, @NonNull TextView textFollowingCount,
+      @NonNull TextView textGuestIndicator, @NonNull TextView textHandle,
+      @NonNull TextView textInterests, @NonNull TextView textPostsCount) {
     this.rootView = rootView;
     this.buttonEditProfile = buttonEditProfile;
     this.buttonSettings = buttonSettings;
@@ -104,6 +107,7 @@ public final class FragmentProfileBinding implements ViewBinding {
     this.layoutSignInPrompt = layoutSignInPrompt;
     this.layoutSignedIn = layoutSignedIn;
     this.progressBar = progressBar;
+    this.textBio = textBio;
     this.textDisplayName = textDisplayName;
     this.textFollowersCount = textFollowersCount;
     this.textFollowingCount = textFollowingCount;
@@ -212,6 +216,12 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textBio;
+      TextView textBio = ViewBindings.findChildViewById(rootView, id);
+      if (textBio == null) {
+        break missingId;
+      }
+
       id = R.id.text_display_name;
       TextView textDisplayName = ViewBindings.findChildViewById(rootView, id);
       if (textDisplayName == null) {
@@ -256,7 +266,7 @@ public final class FragmentProfileBinding implements ViewBinding {
 
       return new FragmentProfileBinding((ScrollView) rootView, buttonEditProfile, buttonSettings,
           buttonSignIn, buttonSignOut, imageAvatar, layoutFollowers, layoutFollowing,
-          layoutInterests, layoutPosts, layoutSignInPrompt, layoutSignedIn, progressBar,
+          layoutInterests, layoutPosts, layoutSignInPrompt, layoutSignedIn, progressBar, textBio,
           textDisplayName, textFollowersCount, textFollowingCount, textGuestIndicator, textHandle,
           textInterests, textPostsCount);
     }

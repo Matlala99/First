@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.map.MapFragment">
+    android:layout_height="match_parent">
 
     <fragment
         android:id="@+id/map"
@@ -12,154 +11,140 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Map Controls -->
-    <LinearLayout
+    <!-- Map Type Toggle Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_map_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
         android:layout_margin="16dp"
-        android:orientation="vertical">
+        android:layout_gravity="top|end"
+        android:src="@drawable/ic_map"
+        app:backgroundTint="@color/white"
+        app:tint="@color/black"
+        app:elevation="8dp" />
 
-        <!-- Map Type Toggle -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
-
-            <ImageButton
-                android:id="@+id/btn_map_type"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackground"
-                android:contentDescription="Change map type"
-                android:src="@drawable/ic_layers"
-                android:tint="@color/text_primary" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <!-- Location FAB -->
+    <!-- Current Location Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_my_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:contentDescription="My Location"
-        app:srcCompat="@drawable/ic_my_location" />
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_my_location"
+        app:backgroundTint="@color/primary"
+        app:tint="@color/white"
+        app:elevation="8dp" />
 
     <!-- Legend Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/legend_card"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:layout_margin="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="8dp">
+        android:layout_gravity="top|start"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/news_map"
-                android:textColor="@color/text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Headlines sized by engagement &amp; authenticity"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp" />
+                android:text="@string/map_legend"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
 
-                <!-- Legend items -->
-                <LinearLayout
-                    android:layout_width="0dp"
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circle_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:background="@drawable/legend_high_engagement" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="High"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:background="@drawable/legend_medium_engagement" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Medium"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="6dp"
-                        android:layout_height="6dp"
-                        android:background="@drawable/legend_low_engagement" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Low"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
+                    android:text="@string/trustworthy_70"
+                    android:textSize="12sp"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circle_orange" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/questionable_40_70"
+                    android:textSize="12sp"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circle_red" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/untrustworthy_40"
+                    android:textSize="12sp"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/larger_markers_more_engagement"
+                android:textSize="11sp"
+                android:textColor="@color/gray_600"
+                android:fontFamily="sans-serif-light" />
 
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

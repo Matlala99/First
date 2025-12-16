@@ -81,4 +81,11 @@
     <string name="remove_image">Remove Image</string>
     <string name="share_post">Share Post</string>
     <string name="app_name">FirstWord</string>
+    <string name="untrustworthy_40"><![CDATA[Untrustworthy (<40%)]]></string>
+    <string name="larger_markers_more_engagement">Larger markers = More engagement</string>
+    <string name="questionable_40_70">Questionable (40-70%)</string>
+    <string name="trustworthy_70">Trustworthy (70%+)</string>
+    <string name="map_legend">Map Legend</string>
+    <string name="bio_will_appear_here">Bio will appear here</string>
+    <string name="failed_to_load_posts">Failed to load posts</string>
 </resources>

@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Header: User Info + Menu -->
+        <!-- Header: User Info + Follow Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,16 +39,33 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/text_user_name"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="User Name"
-                    android:textColor="@color/text_primary"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:maxLines="1"
-                    android:ellipsize="end" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/text_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User Name"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+
+                    <!-- Verified Badge (optional) -->
+                    <ImageView
+                        android:id="@+id/image_verified"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/ic_verified"
+                        android:visibility="gone" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -84,13 +101,27 @@
 
             </LinearLayout>
 
-            <!-- Menu Button -->
+            <!-- Follow Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Follow"
+                android:textSize="12sp"
+                app:cornerRadius="16dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="1dp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <!-- Menu Button (only shown for current user's posts) -->
             <ImageButton
                 android:id="@+id/button_menu"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:layout_marginStart="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_more_vert"
+                android:visibility="gone"
                 app:tint="?attr/colorOnSurfaceVariant" />
 
         </LinearLayout>

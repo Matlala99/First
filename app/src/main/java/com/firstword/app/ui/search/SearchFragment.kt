@@ -13,7 +13,6 @@ import com.firstword.app.models.Post
 import com.firstword.app.ui.feed.FeedAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import java.util.*
 
 class SearchFragment : Fragment() {
 
@@ -62,9 +61,6 @@ class SearchFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrBlank()) {
                     showInitialState()
-                } else if (newText.length >= 2) {
-                    // Real-time search as user types (optional - can be heavy)
-                    // searchPosts(newText)
                 }
                 return true
             }
@@ -119,32 +115,27 @@ class SearchFragment : Fragment() {
         firestore.collection("posts")
             .whereEqualTo("isHidden", false)
             .orderBy("createdAt", Query.Direction.DESCENDING)
-            .limit(100)
+            .limit(50)
             .get()
             .addOnSuccessListener { documents ->
                 searchResults.clear()
 
                 for (document in documents) {
                     try {
-                        val post = document.toObject(Post::class.java)
+                        // Use the fromDocument method from your Post model
+                        val post = Post.fromDocument(document)
 
-                        // Create a safe post object with proper null handling
-                        val safePost = createSafePost(post, document.id)
-
-                        // Enhanced search across multiple fields
+                        // Check if post matches search query
                         val matches = listOf(
-                            safePost.title.lowercase().contains(searchQuery),
-                            safePost.content.lowercase().contains(searchQuery),
-                            safePost.category.lowercase().contains(searchQuery),
-                            safePost.userDisplayName.lowercase().contains(searchQuery),
-                            safePost.userHandle.lowercase().contains(searchQuery),
-                            safePost.newsSource.lowercase().contains(searchQuery),
-                            // Search in tags array
-                            safePost.tags.any { tag -> tag.lowercase().contains(searchQuery) }
+                            post.title.lowercase().contains(searchQuery),
+                            post.content.lowercase().contains(searchQuery),
+                            post.category.lowercase().contains(searchQuery),
+                            post.userDisplayName.lowercase().contains(searchQuery),
+                            post.userHandle.lowercase().contains(searchQuery)
                         ).any { it }
 
-                        if (matches) {
-                            searchResults.add(safePost)
+                        if (matches && post.title.isNotEmpty()) { // Only add valid posts
+                            searchResults.add(post)
                         }
                     } catch (e: Exception) {
                         // Skip posts that can't be parsed properly
@@ -158,7 +149,7 @@ class SearchFragment : Fragment() {
                     showEmptyResults()
                 } else {
                     showSearchResults()
-                    searchAdapter.notifyDataSetChanged()
+                    searchAdapter.updatePosts(searchResults)
                 }
             }
             .addOnFailureListener { exception ->
@@ -172,42 +163,29 @@ class SearchFragment : Fragment() {
             }
     }
 
-    private fun createSafePost(post: Post, documentId: String): Post {
-        return Post(
-            id = documentId,
-            title = post.title ?: "",
-            content = post.content ?: "",
-            imageUrl = post.imageUrl ?: "",
-            videoUrl = post.videoUrl ?: "",
-            userId = post.userId ?: "",
-            userHandle = post.userHandle ?: "",
-            userDisplayName = post.userDisplayName ?: "",
-            userAvatarUrl = post.userAvatarUrl ?: "",
-            category = post.category ?: "general",
-            sourceUrl = post.sourceUrl ?: "",
-            location = post.location,
-            tags = post.tags ?: emptyList(),
-            newsSource = post.newsSource ?: "",
-            likesCount = post.likesCount ?: 0,
-            commentsCount = post.commentsCount ?: 0,
-            sharesCount = post.sharesCount ?: 0,
-            viewsCount = post.viewsCount ?: 0,
-            authenticityVotes = post.authenticityVotes ?: com.firstword.app.models.AuthenticityVotes(),
-            createdAt = post.createdAt,
-            updatedAt = post.updatedAt,
-            isVerified = post.isVerified ?: false,
-            isReported = post.isReported ?: false,
-            isHidden = post.isHidden ?: false
-        )
-    }
-
     private fun handlePostAction(post: Post, action: String) {
         when (action) {
-            "like", "comment", "share", "vote_true", "vote_fake", "vote_ai" -> {
-                // Handle post interactions
-                Toast.makeText(context, "Action: $action on post", Toast.LENGTH_SHORT).show()
+            FeedAdapter.ACTION_LIKE -> {
+                Toast.makeText(context, "Liked post: ${post.title}", Toast.LENGTH_SHORT).show()
             }
-            "open" -> {
+            FeedAdapter.ACTION_COMMENT -> {
+                Toast.makeText(context, "Comment on post: ${post.title}", Toast.LENGTH_SHORT).show()
+            }
+            FeedAdapter.ACTION_SHARE -> {
+                Toast.makeText(context, "Share post: ${post.title}", Toast.LENGTH_SHORT).show()
+            }
+            FeedAdapter.ACTION_VOTE_TRUE,
+            FeedAdapter.ACTION_VOTE_FAKE,
+            FeedAdapter.ACTION_VOTE_AI -> {
+                Toast.makeText(context, "Voted on post: ${post.title}", Toast.LENGTH_SHORT).show()
+            }
+            FeedAdapter.ACTION_VIEW_PROFILE -> {
+                Toast.makeText(context, "View profile: ${post.userDisplayName}", Toast.LENGTH_SHORT).show()
+            }
+            FeedAdapter.ACTION_VIEW_IMAGE -> {
+                Toast.makeText(context, "View image in post", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
                 // Open post detail view
                 openPostDetail(post)
             }

@@ -15,6 +15,11 @@
     <color name="comment_color">#FF757575</color>
     <color name="divider">#1F000000</color>
     <color name="error">#FFF44336</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
     <color name="green_100">#C8E6C9</color>
     <color name="green_500">#4CAF50</color>
     <color name="like_color">#FFE91E63</color>
@@ -72,6 +77,7 @@
     <string name="add_video">Add Video</string>
     <string name="all_news">All News</string>
     <string name="app_name">FirstWord</string>
+    <string name="bio_will_appear_here">Bio will appear here</string>
     <string name="city_headlines">City Headlines</string>
     <string name="comment">Comment</string>
     <string name="continue_as_guest">Continue as Guest</string>
@@ -85,6 +91,7 @@
     <string name="error_auth">Authentication failed. Please try again.</string>
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="error_network">Network error. Please check your connection.</string>
+    <string name="failed_to_load_posts">Failed to load posts</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="gcm_defaultSenderId" translatable="false">168754219142</string>
@@ -94,9 +101,11 @@
     <string name="google_storage_bucket" translatable="false">firstword-b739b.firebasestorage.app</string>
     <string name="hours_ago">%d hours ago</string>
     <string name="just_now">Just now</string>
+    <string name="larger_markers_more_engagement">Larger markers = More engagement</string>
     <string name="like">Like</string>
     <string name="loading_news">Loading news...</string>
     <string name="location_services">Location Services</string>
+    <string name="map_legend">Map Legend</string>
     <string name="minutes_ago">%d minutes ago</string>
     <string name="nav_feed">Feed</string>
     <string name="nav_map">Map</string>
@@ -113,6 +122,7 @@
     <string name="privacy">Privacy</string>
     <string name="profile">Profile</string>
     <string name="project_id" translatable="false">firstword-b739b</string>
+    <string name="questionable_40_70">Questionable (40-70%)</string>
     <string name="refresh_feed">Refresh Feed</string>
     <string name="remove_image">Remove Image</string>
     <string name="settings">Settings</string>
@@ -124,6 +134,8 @@
     <string name="sign_in_with_phone">Sign in with Phone</string>
     <string name="sign_out">Sign Out</string>
     <string name="stay_informed_with_real_time_news">Stay informed with real-time news and community insights</string>
+    <string name="trustworthy_70">Trustworthy (70%+)</string>
+    <string name="untrustworthy_40"><![CDATA[Untrustworthy (<40%)]]></string>
     <string name="vote_ai">Vote AI</string>
     <string name="vote_authentic">Vote Authentic</string>
     <string name="vote_fake">Vote Fake</string>

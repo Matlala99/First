@@ -103,7 +103,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun setupRealTimePostsListener() {
         postsListener = firestore.collection("posts")
-            .whereEqualTo("isHidden", false)
             .whereNotEqualTo("location", null)
             .orderBy("createdAt", Query.Direction.DESCENDING)
             .addSnapshotListener { snapshots, error ->
@@ -112,19 +111,65 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     return@addSnapshotListener
                 }
 
-                snapshots?.let { documents ->
+                snapshots?.let { querySnapshot ->
                     googleMap.clear() // Clear existing markers
 
-                    for (document in documents) {
-                        val post = document.toObject(Post::class.java)
-                        post.location?.let { location ->
-                            addPostMarker(post, location)
+                    for (document in querySnapshot.documents) {
+                        try {
+                            // Parse post data
+                            val data = document.data ?: continue
+
+                            // Check if location exists in the data
+                            val locationData = data["location"] as? Map<String, Any>
+                            if (locationData != null) {
+                                val location = extractLocation(locationData)
+                                val post = createPostFromData(document.id, data)
+
+                                addPostMarker(post, location)
+                            }
+                        } catch (e: Exception) {
+                            // Skip this document if there's an error
+                            continue
                         }
                     }
 
-                    binding.legendCard.visibility = if (documents.isEmpty()) View.GONE else View.VISIBLE
+                    binding.legendCard.visibility = if (querySnapshot.documents.isEmpty()) View.GONE else View.VISIBLE
                 }
             }
+    }
+
+    private fun createPostFromData(documentId: String, data: Map<String, Any>): Post {
+        // Extract authenticity votes
+        val votesData = data["authenticityVotes"] as? Map<String, Any>
+        val authenticityVotes = AuthenticityVotes(
+            trueCount = (votesData?.get("trueCount") as? Long)?.toInt() ?: 0,
+            fakeCount = (votesData?.get("fakeCount") as? Long)?.toInt() ?: 0,
+            aiCount = (votesData?.get("aiCount") as? Long)?.toInt() ?: 0
+        )
+
+        return Post(
+            id = documentId,
+            userId = data["userId"] as? String ?: "",
+            userDisplayName = data["userDisplayName"] as? String ?: "",
+            userHandle = data["userHandle"] as? String ?: "",
+            title = data["title"] as? String ?: "",
+            content = data["content"] as? String ?: "",
+            category = data["category"] as? String ?: "general",
+            likesCount = (data["likesCount"] as? Long)?.toInt() ?: 0,
+            commentsCount = (data["commentsCount"] as? Long)?.toInt() ?: 0,
+            sharesCount = (data["sharesCount"] as? Long)?.toInt() ?: 0,
+            authenticityVotes = authenticityVotes
+        )
+    }
+
+    private fun extractLocation(locationData: Map<String, Any>): PostLocation {
+        return PostLocation(
+            latitude = (locationData["latitude"] as? Double) ?: 0.0,
+            longitude = (locationData["longitude"] as? Double) ?: 0.0,
+            address = locationData["address"] as? String,
+            placeName = locationData["placeName"] as? String,
+            accuracy = (locationData["accuracy"] as? Double) ?: 0.0
+        )
     }
 
     private fun addPostMarker(post: Post, location: PostLocation) {
@@ -175,13 +220,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun calculateAuthenticityScore(authenticityVotes: AuthenticityVotes): Double {
-        val totalVotes = authenticityVotes.totalCount.toDouble()
+        val totalVotes = authenticityVotes.getTotalCount().toDouble()
         return if (totalVotes == 0.0) {
             0.5 // Default neutral score when no votes
         } else {
             // Calculate score based on true votes vs fake/ai votes
-            val trueScore = authenticityVotes.trueCount / totalVotes
-            val fakeAiScore = (authenticityVotes.fakeCount + authenticityVotes.aiCount) / totalVotes
+            val trueScore = authenticityVotes.trueCount.toDouble() / totalVotes
+            val fakeAiScore = (authenticityVotes.fakeCount.toDouble() + authenticityVotes.aiCount.toDouble()) / totalVotes
             // Normalize to 0-1 scale where 1 is most authentic
             trueScore / (trueScore + fakeAiScore)
         }
@@ -231,6 +276,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 enableMyLocation()
                 getCurrentLocation()
+            } else {
+                Toast.makeText(
+                    context,
+                    "Location permission denied. Some features may not work.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -260,7 +311,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 googleMap.animateCamera(
                     CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f)
                 )
+            } ?: run {
+                Toast.makeText(
+                    context,
+                    "Unable to get current location",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+        }.addOnFailureListener { e ->
+            Toast.makeText(
+                context,
+                "Failed to get location: ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -270,11 +333,3 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         _binding = null
     }
 }
-
-// Add this AuthenticityVotes data class if it doesn't exist in your models
-data class AuthenticityVotes(
-    val trueCount: Int = 0,
-    val fakeCount: Int = 0,
-    val aiCount: Int = 0,
-    val totalCount: Int = 0
-)

@@ -4,7 +4,7 @@ package com.firstword.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -22,7 +22,7 @@ public final class FragmentMapBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
-  public final ImageButton btnMapType;
+  public final FloatingActionButton btnMapType;
 
   @NonNull
   public final FloatingActionButton fabMyLocation;
@@ -30,12 +30,17 @@ public final class FragmentMapBinding implements ViewBinding {
   @NonNull
   public final MaterialCardView legendCard;
 
-  private FragmentMapBinding(@NonNull CoordinatorLayout rootView, @NonNull ImageButton btnMapType,
-      @NonNull FloatingActionButton fabMyLocation, @NonNull MaterialCardView legendCard) {
+  @NonNull
+  public final ProgressBar progressBar;
+
+  private FragmentMapBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull FloatingActionButton btnMapType, @NonNull FloatingActionButton fabMyLocation,
+      @NonNull MaterialCardView legendCard, @NonNull ProgressBar progressBar) {
     this.rootView = rootView;
     this.btnMapType = btnMapType;
     this.fabMyLocation = fabMyLocation;
     this.legendCard = legendCard;
+    this.progressBar = progressBar;
   }
 
   @Override
@@ -66,7 +71,7 @@ public final class FragmentMapBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btn_map_type;
-      ImageButton btnMapType = ViewBindings.findChildViewById(rootView, id);
+      FloatingActionButton btnMapType = ViewBindings.findChildViewById(rootView, id);
       if (btnMapType == null) {
         break missingId;
       }
@@ -83,8 +88,14 @@ public final class FragmentMapBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progress_bar;
+      ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar == null) {
+        break missingId;
+      }
+
       return new FragmentMapBinding((CoordinatorLayout) rootView, btnMapType, fabMyLocation,
-          legendCard);
+          legendCard, progressBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

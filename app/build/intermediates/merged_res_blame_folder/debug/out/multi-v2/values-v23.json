@@ -4,7 +4,7 @@
             "outputFile": "com.firstword.app-mergeDebugResources-65:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/home/x/.gradle/caches/transforms-3/26d52785fc8910570477faca70a05534/transformed/material-1.10.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\mleth\\.gradle\\caches\\transforms-3\\26d52785fc8910570477faca70a05534\\transformed\\material-1.10.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,21,25,28,31,34,39,42,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/x/.gradle/caches/transforms-3/e5486fb72f2058965d63a32cf849dc0e/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\mleth\\.gradle\\caches\\transforms-3\\e5486fb72f2058965d63a32cf849dc0e\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "/home/x/.gradle/caches/transforms-3/8102e682bd73f19a9cf3cb31f8efd87c/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\mleth\\.gradle\\caches\\transforms-3\\8102e682bd73f19a9cf3cb31f8efd87c\\transformed\\appcompat-1.6.1\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -73,6 +73,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.firstword.app.ui.profile.EditProfileActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
+            android:name="com.firstword.app.ui.profile.FollowersFollowingActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+        <activity
             android:name="com.firstword.app.ui.auth.AuthActivity"
             android:exported="true"
             android:theme="@style/Theme.FirstWord" />

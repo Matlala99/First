@@ -49,4 +49,14 @@
     <color name="orange_100">#FFE0B2</color>
 
 
+        <!-- Add these colors -->
+
+        <color name="gray_100">#F5F5F5</color>
+        <color name="gray_200">#EEEEEE</color>
+        <color name="gray_300">#E0E0E0</color>
+        <color name="gray_500">#9E9E9E</color>
+        <color name="gray_600">#757575</color>
+
+
+
 </resources>

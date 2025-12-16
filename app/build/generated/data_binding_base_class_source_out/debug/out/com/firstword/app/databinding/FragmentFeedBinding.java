@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -14,7 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.firstword.app.R;
-import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -25,34 +26,48 @@ public final class FragmentFeedBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
-  public final LinearLayout emptyState;
+  public final MaterialButton buttonRetry;
 
   @NonNull
   public final FloatingActionButton fabCreatePost;
 
   @NonNull
-  public final RecyclerView recyclerViewFeed;
+  public final LinearLayout layoutEmpty;
 
   @NonNull
-  public final Spinner spinnerCategory;
+  public final LinearLayout layoutError;
 
   @NonNull
-  public final SwipeRefreshLayout swipeRefreshLayout;
+  public final ProgressBar progressBar;
 
   @NonNull
-  public final MaterialToolbar toolbar;
+  public final RecyclerView recyclerViewPosts;
 
-  private FragmentFeedBinding(@NonNull CoordinatorLayout rootView, @NonNull LinearLayout emptyState,
-      @NonNull FloatingActionButton fabCreatePost, @NonNull RecyclerView recyclerViewFeed,
-      @NonNull Spinner spinnerCategory, @NonNull SwipeRefreshLayout swipeRefreshLayout,
-      @NonNull MaterialToolbar toolbar) {
+  @NonNull
+  public final SwipeRefreshLayout swipeRefresh;
+
+  @NonNull
+  public final TextView textEmpty;
+
+  @NonNull
+  public final TextView textError;
+
+  private FragmentFeedBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull MaterialButton buttonRetry, @NonNull FloatingActionButton fabCreatePost,
+      @NonNull LinearLayout layoutEmpty, @NonNull LinearLayout layoutError,
+      @NonNull ProgressBar progressBar, @NonNull RecyclerView recyclerViewPosts,
+      @NonNull SwipeRefreshLayout swipeRefresh, @NonNull TextView textEmpty,
+      @NonNull TextView textError) {
     this.rootView = rootView;
-    this.emptyState = emptyState;
+    this.buttonRetry = buttonRetry;
     this.fabCreatePost = fabCreatePost;
-    this.recyclerViewFeed = recyclerViewFeed;
-    this.spinnerCategory = spinnerCategory;
-    this.swipeRefreshLayout = swipeRefreshLayout;
-    this.toolbar = toolbar;
+    this.layoutEmpty = layoutEmpty;
+    this.layoutError = layoutError;
+    this.progressBar = progressBar;
+    this.recyclerViewPosts = recyclerViewPosts;
+    this.swipeRefresh = swipeRefresh;
+    this.textEmpty = textEmpty;
+    this.textError = textError;
   }
 
   @Override
@@ -82,9 +97,9 @@ public final class FragmentFeedBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.empty_state;
-      LinearLayout emptyState = ViewBindings.findChildViewById(rootView, id);
-      if (emptyState == null) {
+      id = R.id.button_retry;
+      MaterialButton buttonRetry = ViewBindings.findChildViewById(rootView, id);
+      if (buttonRetry == null) {
         break missingId;
       }
 
@@ -94,32 +109,51 @@ public final class FragmentFeedBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.recycler_view_feed;
-      RecyclerView recyclerViewFeed = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerViewFeed == null) {
+      id = R.id.layout_empty;
+      LinearLayout layoutEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (layoutEmpty == null) {
         break missingId;
       }
 
-      id = R.id.spinner_category;
-      Spinner spinnerCategory = ViewBindings.findChildViewById(rootView, id);
-      if (spinnerCategory == null) {
+      id = R.id.layout_error;
+      LinearLayout layoutError = ViewBindings.findChildViewById(rootView, id);
+      if (layoutError == null) {
         break missingId;
       }
 
-      id = R.id.swipe_refresh_layout;
-      SwipeRefreshLayout swipeRefreshLayout = ViewBindings.findChildViewById(rootView, id);
-      if (swipeRefreshLayout == null) {
+      id = R.id.progress_bar;
+      ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar == null) {
         break missingId;
       }
 
-      id = R.id.toolbar;
-      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
-      if (toolbar == null) {
+      id = R.id.recycler_view_posts;
+      RecyclerView recyclerViewPosts = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerViewPosts == null) {
         break missingId;
       }
 
-      return new FragmentFeedBinding((CoordinatorLayout) rootView, emptyState, fabCreatePost,
-          recyclerViewFeed, spinnerCategory, swipeRefreshLayout, toolbar);
+      id = R.id.swipe_refresh;
+      SwipeRefreshLayout swipeRefresh = ViewBindings.findChildViewById(rootView, id);
+      if (swipeRefresh == null) {
+        break missingId;
+      }
+
+      id = R.id.text_empty;
+      TextView textEmpty = ViewBindings.findChildViewById(rootView, id);
+      if (textEmpty == null) {
+        break missingId;
+      }
+
+      id = R.id.text_error;
+      TextView textError = ViewBindings.findChildViewById(rootView, id);
+      if (textError == null) {
+        break missingId;
+      }
+
+      return new FragmentFeedBinding((CoordinatorLayout) rootView, buttonRetry, fabCreatePost,
+          layoutEmpty, layoutError, progressBar, recyclerViewPosts, swipeRefresh, textEmpty,
+          textError);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
