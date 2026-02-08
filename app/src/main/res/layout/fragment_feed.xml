@@ -34,26 +34,26 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="24dp"
                     android:src="@drawable/ic_feed_empty"
-                    app:tint="?attr/colorOnSurfaceVariant" />
+                    android:alpha="0.5"
+                    app:tint="@color/text_secondary" />
 
                 <TextView
                     android:id="@+id/text_empty"
+                    style="@style/HeadlineText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="No posts yet"
-                    android:textColor="?attr/colorOnSurfaceVariant"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Be the first to share something!"
-                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:text="Be the first to share something\nwith the community!"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -113,9 +113,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_margin="24dp"
         android:src="@drawable/ic_add"
-        app:backgroundTint="?attr/colorPrimary"
-        app:tint="?attr/colorOnPrimary" />
+        app:backgroundTint="@color/primary"
+        app:tint="@color/background"
+        app:elevation="6dp"
+        app:maxImageSize="32dp"
+        app:shapeAppearanceOverlay="@style/CircleImageView" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

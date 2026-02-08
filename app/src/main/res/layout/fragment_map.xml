@@ -19,9 +19,10 @@
         android:layout_margin="16dp"
         android:layout_gravity="top|end"
         android:src="@drawable/ic_map"
-        app:backgroundTint="@color/white"
-        app:tint="@color/black"
-        app:elevation="8dp" />
+        app:backgroundTint="@color/surface"
+        app:tint="@color/primary"
+        app:elevation="8dp"
+        app:shapeAppearanceOverlay="@style/CircleImageView" />
 
     <!-- Current Location Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,8 +33,9 @@
         android:layout_gravity="bottom|end"
         android:src="@drawable/ic_my_location"
         app:backgroundTint="@color/primary"
-        app:tint="@color/white"
-        app:elevation="8dp" />
+        app:tint="@color/background"
+        app:elevation="8dp"
+        app:shapeAppearanceOverlay="@style/CircleImageView" />
 
     <!-- Legend Card -->
     <com.google.android.material.card.MaterialCardView
@@ -42,15 +44,17 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_gravity="top|start"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="@color/white">
+        app:cardCornerRadius="28dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/surface"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/divider">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -58,19 +62,19 @@
                 android:text="@string/map_legend"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
+                android:textColor="@color/primary"
+                android:layout_marginBottom="12dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="4dp">
+                android:layout_marginBottom="8dp">
 
                 <View
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/circle_green" />
 
@@ -79,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/trustworthy_70"
                     android:textSize="12sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text_primary" />
 
             </LinearLayout>
 
@@ -87,12 +91,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="4dp">
+                android:layout_marginBottom="8dp">
 
                 <View
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/circle_orange" />
 
@@ -101,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/questionable_40_70"
                     android:textSize="12sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text_primary" />
 
             </LinearLayout>
 
@@ -111,9 +115,9 @@
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/circle_red" />
 
@@ -122,18 +126,18 @@
                     android:layout_height="wrap_content"
                     android:text="@string/untrustworthy_40"
                     android:textSize="12sp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text_primary" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/larger_markers_more_engagement"
                 android:textSize="11sp"
                 android:textColor="@color/text_secondary"
-                android:fontFamily="sans-serif-light" />
+                android:alpha="0.7" />
 
         </LinearLayout>
 

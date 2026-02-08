@@ -9,12 +9,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="Edit Profile"
-            app:navigationIcon="@drawable/ic_arrow_back" />
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/surface"
+                app:title="Edit Profile"
+                app:titleCentered="true"
+                app:titleTextColor="@color/text_primary"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:navigationIconTint="@color/text_primary" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <!-- Banner Image -->
         <RelativeLayout
@@ -47,181 +58,185 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_avatar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
+                android:padding="2dp"
                 android:src="@drawable/ic_profile"
-                android:background="@drawable/circle_background"
-                android:elevation="4dp" />
+                app:strokeWidth="4dp"
+                app:strokeColor="@color/primary"
+                app:shapeAppearanceOverlay="@style/CircleImageView"
+                android:elevation="8dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_change_avatar"
+                style="@style/SecondaryButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_alignBottom="@id/image_avatar"
                 android:layout_marginStart="120dp"
                 android:text="Change Photo"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                android:textSize="12sp"
+                app:cornerRadius="18dp" />
 
         </RelativeLayout>
 
         <!-- Form Fields -->
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/divider">
 
-            <!-- Display Name -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_display_name"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:hintEnabled="false">
+                android:padding="20dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_display_name"
-                    android:layout_width="match_parent"
+                <!-- Display Name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_display_name"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:hint="Display Name"
-                    android:maxLines="1" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_display_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:maxLines="1" />
 
-            <!-- Bio -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_bio"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_display_name"
-                android:layout_marginTop="16dp"
-                app:hintEnabled="false">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_bio"
-                    android:layout_width="match_parent"
+                <!-- Bio -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_bio"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:hint="Bio"
-                    android:maxLines="3"
-                    android:inputType="textMultiLine" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_display_name">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:maxLines="3"
+                        android:inputType="textMultiLine" />
 
-            <!-- Location -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_bio"
-                android:layout_marginTop="16dp"
-                app:hintEnabled="false">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_location"
-                    android:layout_width="match_parent"
+                <!-- Location -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_location"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:hint="Location"
-                    android:maxLines="1" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_bio">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:maxLines="1" />
 
-            <!-- Website -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_website"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_location"
-                android:layout_marginTop="16dp"
-                app:hintEnabled="false">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_website"
-                    android:layout_width="match_parent"
+                <!-- Website -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_website"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:hint="Website"
-                    android:maxLines="1"
-                    android:inputType="textUri" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_location">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_website"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:maxLines="1"
+                        android:inputType="textUri" />
 
-            <!-- Interests -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_interests"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_website"
-                android:layout_marginTop="16dp"
-                app:hintEnabled="false">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/edit_interests"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Interests (comma separated)"
-                    android:maxLines="2"
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Theme Selection -->
-            <TextView
-                android:id="@+id/text_theme_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Theme"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_interests" />
-
-            <RadioGroup
-                android:id="@+id/radio_group_theme"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_theme_label">
-
-                <RadioButton
-                    android:id="@+id/radio_light"
+                <!-- Theme Selection -->
+                <TextView
+                    android:id="@+id/text_theme_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Light" />
+                    android:layout_marginTop="24dp"
+                    android:text="Theme Preference"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_website" />
 
-                <RadioButton
-                    android:id="@+id/radio_dark"
+                <RadioGroup
+                    android:id="@+id/radio_group_theme"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Dark" />
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_theme_label">
 
-                <RadioButton
-                    android:id="@+id/radio_system"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="System" />
+                    <RadioButton
+                        android:id="@+id/radio_light"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Light"
+                        android:textColor="@color/text_secondary" />
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/radio_dark"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dark"
+                        android:textColor="@color/text_secondary" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <RadioButton
+                        android:id="@+id/radio_system"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="System"
+                        android:textColor="@color/text_secondary" />
+
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <ProgressBar
             android:id="@+id/progress_bar"

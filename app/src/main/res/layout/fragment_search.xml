@@ -6,11 +6,26 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search posts, people, tags..." />
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/divider">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:searchIcon="@drawable/ic_search"
+            app:queryHint="Search posts, people, tags..." />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -28,11 +43,12 @@
 
         <TextView
             android:id="@+id/textRecentSearches"
+            style="@style/HeadlineText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Recent Searches"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:textColor="@color/primary"
             android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -56,9 +72,12 @@
             android:id="@+id/textResultsCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="4dp"
             android:text="Search results"
-            android:textAppearance="?attr/textAppearanceBodySmall" />
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSearch"

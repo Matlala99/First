@@ -22,14 +22,16 @@
             android:orientation="horizontal">
 
             <!-- User Avatar -->
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_user_avatar"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginEnd="12dp"
+                android:padding="2dp"
                 android:src="@drawable/ic_profile"
-                android:background="@drawable/circle_background"
-                android:padding="2dp" />
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/primary"
+                app:shapeAppearanceOverlay="@style/CircleImageView" />
 
             <!-- User Info -->
             <LinearLayout
@@ -103,14 +105,12 @@
             <!-- Follow Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_follow"
+                style="@style/SecondaryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="Follow"
                 android:textSize="12sp"
-                app:cornerRadius="16dp"
-                app:strokeColor="@color/primary"
-                app:strokeWidth="1dp"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                app:cornerRadius="16dp" />
 
             <!-- Menu Button (only shown for current user's posts) -->
             <ImageButton
@@ -137,7 +137,7 @@
             app:chipBackgroundColor="@color/glass_white_10"
             app:chipStrokeColor="@color/primary"
             app:chipStrokeWidth="1dp"
-            app:chipCornerRadius="12dp" />
+            app:chipCornerRadius="20dp" />
 
         <!-- Post Title -->
         <TextView

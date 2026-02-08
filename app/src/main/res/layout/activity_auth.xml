@@ -53,8 +53,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:visibility="gone"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitle">
