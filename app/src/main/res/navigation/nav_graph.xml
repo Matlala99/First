@@ -30,10 +30,23 @@
         tools:layout="@layout/fragment_profile" />
     <!-- Add to your nav_graph.xml -->
     <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.firstword.app.ui.feed.FeedFragment"
+        android:label="Feed"
+        tools:layout="@layout/fragment_feed">
+
+        <action
+            android:id="@+id/action_feedFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/createPostFragment"
         android:name="com.firstword.app.ui.create.CreatePostFragment"
         android:label="Create Post"
         tools:layout="@layout/fragment_create_post" />
+
 
     <!-- Add actions from feed fragment -->
     <action

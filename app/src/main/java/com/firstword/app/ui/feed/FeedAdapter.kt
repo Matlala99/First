@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 import android.widget.Toast
+import android.util.Log
 
 class FeedAdapter(
     private val posts: List<Post>,
@@ -87,7 +88,7 @@ class FeedAdapter(
                 textCommentsCount.text = formatCount(post.commentsCount)
                 textSharesCount.text = formatCount(post.sharesCount)
 
-                // Authenticity votes
+                // Authenticity votes - FIXED: Use the correct properties from your model
                 textVoteTrueCount.text = post.authenticityVotes.trueCount.toString()
                 textVoteFakeCount.text = post.authenticityVotes.fakeCount.toString()
                 textVoteAiCount.text = post.authenticityVotes.aiCount.toString()
@@ -150,27 +151,29 @@ class FeedAdapter(
         }
 
         private fun updateFollowButtonUI(isFollowing: Boolean, targetUserId: String) {
+            val context = binding.root.context
+
             if (isFollowing) {
                 binding.buttonFollow.text = "Following"
                 binding.buttonFollow.setBackgroundColor(
-                    ContextCompat.getColor(binding.root.context, R.color.primary)
+                    ContextCompat.getColor(context, R.color.neon_blue)
                 )
                 binding.buttonFollow.setTextColor(
-                    ContextCompat.getColor(binding.root.context, R.color.white)
+                    ContextCompat.getColor(context, R.color.black)
                 )
                 binding.buttonFollow.strokeColor = ColorStateList.valueOf(
-                    ContextCompat.getColor(binding.root.context, R.color.primary)
+                    ContextCompat.getColor(context, R.color.neon_blue)
                 )
             } else {
                 binding.buttonFollow.text = "Follow"
                 binding.buttonFollow.setBackgroundColor(
-                    ContextCompat.getColor(binding.root.context, R.color.transparent)
+                    ContextCompat.getColor(context, R.color.transparent)
                 )
                 binding.buttonFollow.setTextColor(
-                    ContextCompat.getColor(binding.root.context, R.color.primary)
+                    ContextCompat.getColor(context, R.color.neon_blue)
                 )
                 binding.buttonFollow.strokeColor = ColorStateList.valueOf(
-                    ContextCompat.getColor(binding.root.context, R.color.primary)
+                    ContextCompat.getColor(context, R.color.neon_blue)
                 )
             }
 
@@ -310,8 +313,9 @@ class FeedAdapter(
 
         private fun bindUserAvatar(avatarUrl: String) {
             val context = binding.root.context
+            val url = if (avatarUrl.isNotEmpty()) avatarUrl else R.drawable.ic_profile
             Glide.with(context)
-                .load(if (avatarUrl.isNotEmpty()) avatarUrl else R.drawable.ic_profile)
+                .load(url)
                 .circleCrop()
                 .placeholder(R.drawable.ic_profile)
                 .error(R.drawable.ic_profile)
@@ -336,7 +340,10 @@ class FeedAdapter(
 
         private fun bindAuthenticitySummary(post: Post) {
             val context = binding.root.context
-            val totalVotes = post.authenticityVotes.getTotalCount()
+            val totalVotes = post.authenticityVotes.trueCount +
+                    post.authenticityVotes.fakeCount +
+                    post.authenticityVotes.aiCount
+
             if (totalVotes > 0) {
                 val percentages = post.authenticityVotes.getAuthenticityPercentage()
                 val truePercentage = percentages["true"] ?: 0.0
@@ -347,9 +354,9 @@ class FeedAdapter(
 
                 // Set progress color based on percentage
                 val progressColor = when {
-                    truePercentage >= 70 -> ContextCompat.getColor(context, R.color.green_500)
-                    truePercentage >= 40 -> ContextCompat.getColor(context, R.color.orange_500)
-                    else -> ContextCompat.getColor(context, R.color.red_500)
+                    truePercentage >= 70 -> ContextCompat.getColor(context, R.color.success)
+                    truePercentage >= 40 -> ContextCompat.getColor(context, R.color.warning)
+                    else -> ContextCompat.getColor(context, R.color.error)
                 }
                 binding.progressAuthenticity.progressTintList = ColorStateList.valueOf(progressColor)
 
@@ -375,7 +382,10 @@ class FeedAdapter(
             binding.layoutVoting.visibility = View.GONE
 
             // Show stats if there are votes
-            val totalVotes = post.authenticityVotes.getTotalCount()
+            val totalVotes = post.authenticityVotes.trueCount +
+                    post.authenticityVotes.fakeCount +
+                    post.authenticityVotes.aiCount
+
             if (totalVotes > 0) {
                 binding.textStats.text = buildStatsText(post)
                 binding.textStats.visibility = View.VISIBLE
@@ -413,5 +423,3 @@ class FeedAdapter(
         }
     }
 }
-
-// Helper Toast import

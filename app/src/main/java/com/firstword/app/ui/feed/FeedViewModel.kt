@@ -1,9 +1,11 @@
 package com.firstword.app.ui.feed
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.firstword.app.models.Post
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
@@ -15,43 +17,37 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlin.math.max
 
 class FeedViewModel : ViewModel() {
 
     private val auth: FirebaseAuth = Firebase.auth
     private val db: FirebaseFirestore = Firebase.firestore
 
-    private val _posts = MutableLiveData<List<com.firstword.app.models.Post>>()
-    val posts: LiveData<List<com.firstword.app.models.Post>> = _posts
+    private val _posts = MutableLiveData<List<Post>>(emptyList())
+    val posts: LiveData<List<Post>> = _posts
 
-    private val _isLoading = MutableLiveData<Boolean>()
+    private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _error = MutableLiveData<String?>()
+    private val _error = MutableLiveData<String?>(null)
     val error: LiveData<String?> = _error
 
     private var postsListener: ListenerRegistration? = null
 
     init {
-        checkAuthAndLoadPosts()
-    }
-
-    private fun checkAuthAndLoadPosts() {
-        if (auth.currentUser != null) {
-            loadPosts()
-        } else {
-            _error.value = "Please sign in to view posts"
-        }
+        Log.d(TAG, "ViewModel initialized")
     }
 
     fun loadPosts() {
         _isLoading.value = true
         _error.value = null
+        Log.d(TAG, "Loading posts...")
+
+        // Remove old listener
+        postsListener?.remove()
 
         try {
-            // Remove old listener
-            postsListener?.remove()
-
             // Query posts collection
             val query = db.collection("posts")
                 .orderBy("createdAt", Query.Direction.DESCENDING)
@@ -61,30 +57,38 @@ class FeedViewModel : ViewModel() {
                 _isLoading.value = false
 
                 if (error != null) {
-                    // Handle the error directly
+                    Log.e(TAG, "Firestore error: ${error.message}")
                     handleFirestoreError(error)
                     return@addSnapshotListener
                 }
 
-                if (snapshot != null) {
-                    // Use fromDocument instead of toObject
-                    val postsList = snapshot.documents.map { document ->
+                if (snapshot != null && !snapshot.isEmpty) {
+                    Log.d(TAG, "Snapshot received with ${snapshot.documents.size} documents")
+
+                    val postsList = snapshot.documents.mapNotNull { document ->
                         try {
-                            com.firstword.app.models.Post.fromDocument(document)
+                            // Use your Post.fromDocument method
+                            val post = Post.fromDocument(document)
+                            Log.d(TAG, "Parsed post: ${post.id} - ${post.title}")
+                            post
                         } catch (e: Exception) {
-                            // Log the error but return empty post
-                            println("Error parsing post ${document.id}: ${e.message}")
-                            com.firstword.app.models.Post()
+                            Log.e(TAG, "Error parsing post ${document.id}: ${e.message}")
+                            null
                         }
                     }
+
                     _posts.value = postsList
+                    Log.d(TAG, "Posts list updated with ${postsList.size} items")
+
                 } else {
+                    Log.d(TAG, "Snapshot is null or empty")
                     _posts.value = emptyList()
                 }
             }
         } catch (e: Exception) {
             _isLoading.value = false
             _error.value = "Failed to load posts: ${e.message}"
+            Log.e(TAG, "Exception in loadPosts: ${e.message}", e)
         }
     }
 
@@ -108,68 +112,6 @@ class FeedViewModel : ViewModel() {
             }
             else -> {
                 _error.value = "Error: ${error.message}"
-            }
-        }
-    }
-
-    fun loadFollowingPosts() {
-        val currentUserId = auth.currentUser?.uid ?: return
-
-        viewModelScope.launch {
-            _isLoading.value = true
-            _error.value = null
-
-            try {
-                // Get list of users the current user is following
-                val followingIds = getFollowingIds(currentUserId)
-
-                if (followingIds.isEmpty()) {
-                    _posts.value = emptyList()
-                    _isLoading.value = false
-                    return@launch
-                }
-
-                // Query posts from followed users
-                val query = db.collection("posts")
-                    .whereIn("userId", followingIds)
-                    .orderBy("createdAt", Query.Direction.DESCENDING)
-                    .limit(50)
-
-                setupPostsListener(query)
-            } catch (e: Exception) {
-                _isLoading.value = false
-                _error.value = "Failed to load following posts: ${e.message}"
-            }
-        }
-    }
-
-    private suspend fun getFollowingIds(userId: String): List<String> {
-        return db.collection("follows")
-            .whereEqualTo("followerId", userId)
-            .get()
-            .await()
-            .documents
-            .mapNotNull { it.getString("followedId") }
-    }
-
-    private fun setupPostsListener(query: Query) {
-        postsListener?.remove()
-
-        postsListener = query.addSnapshotListener { snapshot, error ->
-            _isLoading.value = false
-
-            if (error != null) {
-                handleFirestoreError(error)
-                return@addSnapshotListener
-            }
-
-            if (snapshot != null) {
-                val postsList = snapshot.documents.map { document ->
-                    com.firstword.app.models.Post.fromDocument(document)
-                }
-                _posts.value = postsList
-            } else {
-                _posts.value = emptyList()
             }
         }
     }
@@ -222,7 +164,7 @@ class FeedViewModel : ViewModel() {
         val currentPosts = _posts.value ?: return
         val updatedPosts = currentPosts.map { post ->
             if (post.id == postId) {
-                post.copy(likesCount = post.likesCount + delta)
+                post.copy(likesCount = max(0, post.likesCount + delta))
             } else {
                 post
             }
@@ -314,22 +256,40 @@ class FeedViewModel : ViewModel() {
                 val currentVotes = post.authenticityVotes
                 val updatedVotes = when {
                     previousVote == null -> when (newVote) {
-                        "authentic" -> currentVotes.copy(trueCount = currentVotes.trueCount + 1)
-                        "inauthentic" -> currentVotes.copy(fakeCount = currentVotes.fakeCount + 1)
-                        "unsure" -> currentVotes.copy(aiCount = currentVotes.aiCount + 1)
+                        "authentic" -> currentVotes.copy(
+                            trueCount = currentVotes.trueCount + 1
+                        )
+                        "inauthentic" -> currentVotes.copy(
+                            fakeCount = currentVotes.fakeCount + 1
+                        )
+                        "unsure" -> currentVotes.copy(
+                            aiCount = currentVotes.aiCount + 1
+                        )
                         else -> currentVotes
                     }
                     else -> {
                         val votesAfterRemove = when (previousVote) {
-                            "authentic" -> currentVotes.copy(trueCount = currentVotes.trueCount - 1)
-                            "inauthentic" -> currentVotes.copy(fakeCount = currentVotes.fakeCount - 1)
-                            "unsure" -> currentVotes.copy(aiCount = currentVotes.aiCount - 1)
+                            "authentic" -> currentVotes.copy(
+                                trueCount = max(0, currentVotes.trueCount - 1)
+                            )
+                            "inauthentic" -> currentVotes.copy(
+                                fakeCount = max(0, currentVotes.fakeCount - 1)
+                            )
+                            "unsure" -> currentVotes.copy(
+                                aiCount = max(0, currentVotes.aiCount - 1)
+                            )
                             else -> currentVotes
                         }
                         when (newVote) {
-                            "authentic" -> votesAfterRemove.copy(trueCount = votesAfterRemove.trueCount + 1)
-                            "inauthentic" -> votesAfterRemove.copy(fakeCount = votesAfterRemove.fakeCount + 1)
-                            "unsure" -> votesAfterRemove.copy(aiCount = votesAfterRemove.aiCount + 1)
+                            "authentic" -> votesAfterRemove.copy(
+                                trueCount = votesAfterRemove.trueCount + 1
+                            )
+                            "inauthentic" -> votesAfterRemove.copy(
+                                fakeCount = votesAfterRemove.fakeCount + 1
+                            )
+                            "unsure" -> votesAfterRemove.copy(
+                                aiCount = votesAfterRemove.aiCount + 1
+                            )
                             else -> votesAfterRemove
                         }
                     }
@@ -343,6 +303,7 @@ class FeedViewModel : ViewModel() {
     }
 
     fun refreshPosts() {
+        Log.d(TAG, "Refreshing posts")
         loadPosts()
     }
 
@@ -353,5 +314,10 @@ class FeedViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         postsListener?.remove()
+        Log.d(TAG, "ViewModel cleared")
+    }
+
+    companion object {
+        private const val TAG = "FeedViewModel"
     }
 }

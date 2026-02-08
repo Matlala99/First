@@ -12,12 +12,14 @@ import com.firstword.app.models.User
 class UserAdapter(
     private var users: List<User>,
     private val currentUserId: String,
+    private var followingIds: Set<String> = emptySet(),
     private val onUserClick: (User) -> Unit,
     private val onFollowClick: (User) -> Unit
 ) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    fun updateUsers(newUsers: List<User>) {
+    fun updateUsers(newUsers: List<User>, newFollowingIds: Set<String>? = null) {
         users = newUsers
+        newFollowingIds?.let { followingIds = it }
         notifyDataSetChanged()
     }
 
@@ -58,6 +60,22 @@ class UserAdapter(
                 binding.buttonFollow.visibility = View.GONE
             } else {
                 binding.buttonFollow.visibility = View.VISIBLE
+                val isFollowing = followingIds.contains(user.id)
+
+                if (isFollowing) {
+                    binding.buttonFollow.text = "Following"
+                    // Use a secondary style for following state
+                    binding.buttonFollow.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                    binding.buttonFollow.setStrokeColorResource(R.color.primary)
+                    binding.buttonFollow.setStrokeWidthResource(R.dimen.button_stroke_width)
+                    binding.buttonFollow.setTextColor(binding.root.context.getColor(R.color.primary))
+                } else {
+                    binding.buttonFollow.text = "Follow"
+                    binding.buttonFollow.setBackgroundColor(binding.root.context.getColor(R.color.primary))
+                    binding.buttonFollow.setStrokeWidth(0)
+                    binding.buttonFollow.setTextColor(binding.root.context.getColor(R.color.background))
+                }
+
                 binding.buttonFollow.setOnClickListener {
                     onFollowClick(user)
                 }

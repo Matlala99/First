@@ -61,7 +61,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.buttonSettings.setOnClickListener {
-            Toast.makeText(context, "Settings feature coming soon", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireContext(), SettingsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.buttonSignOut.setOnClickListener {

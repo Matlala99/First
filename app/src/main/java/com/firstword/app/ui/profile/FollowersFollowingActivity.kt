@@ -117,17 +117,17 @@ class FollowersFollowingActivity : AppCompatActivity() {
                 ContextCompat.getColor(this, android.R.color.white)
             )
             binding.tabFollowing.setBackgroundColor(
-                ContextCompat.getColor(this, R.color.gray_200)
+                ContextCompat.getColor(this, R.color.divider)
             )
             binding.tabFollowing.setTextColor(
-                ContextCompat.getColor(this, android.R.color.black)
+                ContextCompat.getColor(this, R.color.text_secondary)
             )
         } else {
             binding.tabFollowers.setBackgroundColor(
-                ContextCompat.getColor(this, R.color.gray_200)
+                ContextCompat.getColor(this, R.color.divider)
             )
             binding.tabFollowers.setTextColor(
-                ContextCompat.getColor(this, android.R.color.black)
+                ContextCompat.getColor(this, R.color.text_secondary)
             )
             binding.tabFollowing.setBackgroundColor(
                 ContextCompat.getColor(this, R.color.primary)
@@ -143,6 +143,10 @@ class FollowersFollowingActivity : AppCompatActivity() {
             userAdapter.updateUsers(users)
             binding.textEmpty.visibility = if (users.isEmpty()) View.VISIBLE else View.GONE
             binding.swipeRefresh.isRefreshing = false
+        }
+
+        viewModel.currentUserFollowingIds.observe(this) { followingIds ->
+            userAdapter.updateUsers(viewModel.users.value ?: emptyList(), followingIds)
         }
 
         viewModel.isLoading.observe(this) { isLoading ->

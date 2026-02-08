@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp"
-    app:cardUseCompatPadding="true">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="28dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/divider"
+    app:cardBackgroundColor="@color/surface">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,21 +18,27 @@
         android:padding="16dp">
 
         <!-- Avatar -->
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_avatar"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:padding="2dp"
             android:src="@drawable/ic_profile"
-            android:background="@drawable/circle_background" />
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/primary"
+            app:shapeAppearanceOverlay="@style/CircleImageView" />
 
         <!-- Verified Badge -->
         <ImageView
             android:id="@+id/image_verified"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignTop="@id/image_avatar"
             android:layout_alignEnd="@id/image_avatar"
+            android:layout_marginTop="-4dp"
+            android:layout_marginEnd="-4dp"
             android:src="@drawable/ic_verified"
+            android:elevation="2dp"
             android:visibility="gone" />
 
         <!-- User Info -->
@@ -37,15 +47,16 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/image_avatar"
             android:layout_alignTop="@id/image_avatar"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_toStartOf="@id/button_follow"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/text_display_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="John Doe"
-                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:maxLines="1"
                 android:ellipsize="end" />
@@ -55,9 +66,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="@johndoe"
+                android:textColor="@color/text_secondary"
                 android:textSize="14sp"
-                android:textColor="@color/gray_600"
                 android:maxLines="1"
                 android:ellipsize="end" />
 
@@ -66,12 +76,15 @@
         <!-- Follow Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_follow"
+            style="@style/PrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_alignTop="@id/image_avatar"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:minWidth="90dp"
+            android:paddingHorizontal="16dp"
             android:text="Follow"
-            android:textSize="14sp"
+            android:textSize="13sp"
             app:cornerRadius="18dp" />
 
         <!-- Bio -->
@@ -80,8 +93,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/image_avatar"
-            android:layout_marginTop="8dp"
-            android:text="This is a sample bio that describes the user."
+            android:layout_marginTop="12dp"
+            android:textColor="@color/text_primary"
+            android:alpha="0.8"
             android:textSize="14sp"
             android:maxLines="2"
             android:ellipsize="end" />
@@ -91,43 +105,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_bio"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/text_followers_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1.2k"
-                android:textSize="13sp"
                 android:textColor="@color/primary"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" followers · "
-                android:textSize="13sp"
-                android:textColor="@color/gray_600" />
+                android:text=" followers"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" · "
+                android:textColor="@color/divider"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/text_following_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="345"
-                android:textSize="13sp"
                 android:textColor="@color/primary"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" following"
-                android:textSize="13sp"
-                android:textColor="@color/gray_600" />
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
 
         </LinearLayout>
 
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

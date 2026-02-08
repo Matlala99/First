@@ -1,14 +1,21 @@
 package com.firstword.app.ui.feed
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.firstword.app.R
 import com.firstword.app.databinding.FragmentFeedBinding
+import com.firstword.app.ui.auth.AuthActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class FeedFragment : Fragment() {
 
@@ -30,13 +37,16 @@ class FeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("FeedFragment", "onViewCreated called")
+
         setupRecyclerView()
         setupObservers()
         setupSwipeRefresh()
+        setupFloatingActionButton()
+        setupRetryButton()
 
-        binding.buttonRetry.setOnClickListener {
-            viewModel.refreshPosts()
-        }
+        // Load posts
+        viewModel.loadPosts()
     }
 
     private fun setupRecyclerView() {
@@ -53,27 +63,34 @@ class FeedFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.posts.observe(viewLifecycleOwner) { posts ->
+            Log.d("FeedFragment", "Posts observed: ${posts.size}")
             adapter.updatePosts(posts)
 
             if (posts.isEmpty()) {
-                binding.textEmpty.visibility = View.VISIBLE
+                binding.layoutEmpty.visibility = View.VISIBLE
+                binding.layoutError.visibility = View.GONE
                 binding.recyclerViewPosts.visibility = View.GONE
             } else {
-                binding.textEmpty.visibility = View.GONE
+                binding.layoutEmpty.visibility = View.GONE
+                binding.layoutError.visibility = View.GONE
                 binding.recyclerViewPosts.visibility = View.VISIBLE
             }
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-            binding.swipeRefresh.isRefreshing = isLoading
+            val isLoadingBoolean = isLoading ?: false
+            binding.progressBar.visibility = if (isLoadingBoolean) View.VISIBLE else View.GONE
+            binding.swipeRefresh.isRefreshing = isLoadingBoolean
         }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {
+                Log.e("FeedFragment", "Error observed: $it")
                 showError(it)
                 binding.textError.text = it
                 binding.layoutError.visibility = View.VISIBLE
+                binding.recyclerViewPosts.visibility = View.GONE
+                binding.layoutEmpty.visibility = View.GONE
             } ?: run {
                 binding.layoutError.visibility = View.GONE
             }
@@ -81,12 +98,67 @@ class FeedFragment : Fragment() {
     }
 
     private fun setupSwipeRefresh() {
+        val neonBlueColor = ContextCompat.getColor(requireContext(), R.color.neon_blue)
+        binding.swipeRefresh.setColorSchemeColors(neonBlueColor)
+
         binding.swipeRefresh.setOnRefreshListener {
+            Log.d("FeedFragment", "Swipe refresh triggered")
+            viewModel.refreshPosts()
+        }
+    }
+
+    private fun setupFloatingActionButton() {
+        Log.d("FeedFragment", "Setting up FAB")
+
+        binding.fabCreatePost.setOnClickListener {
+            Log.d("FeedFragment", "FAB clicked")
+
+            // Check authentication
+            val currentUser = FirebaseAuth.getInstance().currentUser
+
+            if (currentUser == null) {
+                // User not authenticated - show sign in prompt
+                showSignInPrompt()
+            } else {
+                // User authenticated - try to navigate
+                navigateToCreatePost()
+            }
+        }
+
+        // Make sure FAB is visible
+        binding.fabCreatePost.visibility = View.VISIBLE
+        binding.fabCreatePost.isEnabled = true
+    }
+
+    private fun showSignInPrompt() {
+        Snackbar.make(binding.root, "Please sign in to create posts", Snackbar.LENGTH_LONG)
+            .setAction("SIGN IN") {
+                val intent = Intent(requireContext(), AuthActivity::class.java)
+                startActivity(intent)
+            }
+            .show()
+    }
+
+    private fun navigateToCreatePost() {
+        try {
+            // Try to navigate to create post fragment
+            findNavController().navigate(R.id.createPostFragment)
+            Log.d("FeedFragment", "Successfully navigated to createPostFragment")
+        } catch (e: Exception) {
+            Log.e("FeedFragment", "Navigation failed: ${e.message}", e)
+            Snackbar.make(binding.root, "Cannot create post right now", Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setupRetryButton() {
+        binding.buttonRetry.setOnClickListener {
+            Log.d("FeedFragment", "Retry button clicked")
             viewModel.refreshPosts()
         }
     }
 
     private fun handlePostAction(post: com.firstword.app.models.Post, action: String) {
+        Log.d("FeedFragment", "Post action: $action for post: ${post.id}")
         when (action) {
             FeedAdapter.ACTION_LIKE -> {
                 viewModel.likePost(post.id)
@@ -102,21 +174,32 @@ class FeedFragment : Fragment() {
             }
             FeedAdapter.ACTION_COMMENT -> {
                 // Navigate to comments
+                Snackbar.make(binding.root, "Comment on post: ${post.id}", Snackbar.LENGTH_SHORT).show()
             }
             FeedAdapter.ACTION_SHARE -> {
                 // Share post
+                Snackbar.make(binding.root, "Share post: ${post.id}", Snackbar.LENGTH_SHORT).show()
             }
             FeedAdapter.ACTION_VIEW_PROFILE -> {
                 // Navigate to profile
+                Snackbar.make(binding.root, "View profile: ${post.userDisplayName}", Snackbar.LENGTH_SHORT).show()
             }
             FeedAdapter.ACTION_VIEW_IMAGE -> {
                 // Show full image
+                if (post.imageUrl.isNotEmpty()) {
+                    Snackbar.make(binding.root, "View image", Snackbar.LENGTH_SHORT).show()
+                }
             }
             FeedAdapter.ACTION_FOLLOW -> {
                 // Handle follow action (already handled in adapter)
+                Snackbar.make(binding.root, "Follow action for user: ${post.userId}", Snackbar.LENGTH_SHORT).show()
             }
             FeedAdapter.ACTION_MENU -> {
                 // Show post menu options
+                Snackbar.make(binding.root, "Post menu for: ${post.id}", Snackbar.LENGTH_SHORT).show()
+            }
+            else -> {
+                Log.w("FeedFragment", "Unknown action: $action")
             }
         }
     }

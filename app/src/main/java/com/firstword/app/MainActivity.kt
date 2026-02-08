@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set up the toolbar as the action bar
+        setSupportActionBar(binding.toolbar)
+
         // Check authentication first
         checkAuthState()
 

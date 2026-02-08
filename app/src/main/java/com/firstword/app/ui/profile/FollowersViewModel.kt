@@ -28,10 +28,16 @@ class FollowersViewModel : ViewModel() {
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
 
+    private val _currentUserFollowingIds = MutableLiveData<Set<String>>()
+    val currentUserFollowingIds: LiveData<Set<String>> = _currentUserFollowingIds
+
     fun loadFollowers(userId: String) {
         viewModelScope.launch {
             _isLoading.value = true
             _error.value = null
+
+            // Also load current user's following list to show follow status
+            loadCurrentUserFollowing()
 
             try {
                 val followersIds = getFollowerIds(userId)
@@ -50,6 +56,9 @@ class FollowersViewModel : ViewModel() {
             _isLoading.value = true
             _error.value = null
 
+            // Also load current user's following list to show follow status
+            loadCurrentUserFollowing()
+
             try {
                 val followingIds = getFollowingIds(userId)
                 val usersList = getUsersByIds(followingIds)
@@ -59,6 +68,16 @@ class FollowersViewModel : ViewModel() {
             } finally {
                 _isLoading.value = false
             }
+        }
+    }
+
+    private suspend fun loadCurrentUserFollowing() {
+        val currentUserId = auth.currentUser?.uid ?: return
+        try {
+            val followingIds = getFollowingIds(currentUserId).toSet()
+            _currentUserFollowingIds.value = followingIds
+        } catch (e: Exception) {
+            // Silently fail or log
         }
     }
 
@@ -139,8 +158,18 @@ class FollowersViewModel : ViewModel() {
                         .update("followersCount", FieldValue.increment(1)).await()
                 }
 
-                // Refresh current list
+                // Refresh current list and current user's following set
                 refreshCurrentList(targetUserId, existingFollow.exists())
+
+                // Update the following state for the UI
+                val currentSet = _currentUserFollowingIds.value?.toMutableSet() ?: mutableSetOf()
+                if (existingFollow.exists()) {
+                    currentSet.remove(targetUserId)
+                } else {
+                    currentSet.add(targetUserId)
+                }
+                _currentUserFollowingIds.value = currentSet
+
             } catch (e: Exception) {
                 _error.value = "Failed to update follow status: ${e.message}"
             }
